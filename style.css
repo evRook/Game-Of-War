@@ -1,0 +1,75 @@
+* {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body {
+    border: 2px grey solid;
+}
+
+.page__container {
+    border: 2px grey solid;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page__container div {
+    border: 2px grey solid;
+}
+
+header {
+    border: 2px grey solid;
+    width: 60%;
+}
+
+.title {
+    font-size: 32px;
+    text-align: center;
+}
+
+.score__container {
+    width:100%; 
+    display: flex;
+    align-items: center;
+}
+
+.player--score {
+    display: flex;
+    flex-direction: column;
+}
+
+.comp--score {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    margin-top: 100px;
+    width: 60%;
+}
+
+.results__container {
+    display: flex;
+}
+
+.play__container{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+}
+
+.player--play{
+    display: flex;
+    flex-direction: column;
+}
+
+.comp--play{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn--play {
+    margin-top: 20px;
+    display: flex;
+}
