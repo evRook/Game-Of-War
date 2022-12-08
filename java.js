@@ -38,5 +38,42 @@ function playGame(){
 }
 
 playGame();
+
 console.log(playerDeck);
+
 console.log(compDeck);
+
+
+
+function playCard(){
+    playerPlayed = playerDeck[0];
+    compPlayed = compDeck[0];
+  }
+  
+  playCard();
+
+  console.log(playerPlayed);
+  console.log(compPlayed);
+  
+  // console.log(playerDeck);
+  // console.log(compDeck);
+  
+  function cardLogic(){
+    if(playerPlayed == compPlayed){
+      for(l=0; l<=3; l++){
+          warRoom.unshift(playerDeck.splice([0])[0]);
+          warRoom.unshift(compDeck.splice([0])[0]);
+          console.log(warRoom);
+      }   
+    }else if(playerPlayed > compPlayed){
+        playerWon.unshift(compDeck.splice([0])[0]);
+    }else if(playerPlayed < compPlayed){
+        compWon.unshift(playerDeck.splice([0])[0]);
+    }
+  }
+                     
+  
+  cardLogic();
+  console.log(playerWon);
+  console.log(compWon);
+  console.log(warRoom);
