@@ -13,28 +13,30 @@ var compDeck = [];
 // var playerPlayed = []
 
 // var compPlayed = []
-
-function shuffle() {
-    for(i=deck.length - 1; i>0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = deck[i];
-        deck[i] = deck[j];
-        deck[j] = temp;
-    }
-}
-
-shuffle();
-
-function dealCards(){
-    for(k=deck.length-1; k>=0; k--){
-        if(k % 2 === 0){
-            playerDeck.unshift(deck.splice(k,1)[0]);
-        }else if(k % 2 === 1){
-            compDeck.unshift(deck.splice(k,1)[0]);
+function playGame(){
+    function shuffle() {
+        for(i=deck.length - 1; i>0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = deck[i];
+            deck[i] = deck[j];
+            deck[j] = temp;
         }
     }
+
+    shuffle();
+
+    function dealCards(){
+        for(k=deck.length-1; k>=0; k--){
+            if(k % 2 === 0){
+                playerDeck.unshift(deck.splice(k,1)[0]);
+            }else if(k % 2 === 1){
+                compDeck.unshift(deck.splice(k,1)[0]);
+            }
+        }
+    }
+    dealCards();
 }
 
-dealCards();
+playGame();
 console.log(playerDeck);
 console.log(compDeck);
