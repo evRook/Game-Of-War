@@ -16,27 +16,7 @@ var warRoom = [];
 
 const win = 52
 
-function warLoop(){
-  while(win > playerWon.length || win > comp.length){
-    if(playerWon.length === 52){
-      console.log("You Win!")
-        
-    }else if(compWon.length === win){
-      console.log("CPU Wins!")
-
-    }else if(playerWon.length !== win && playerDeck === 0){
-      while(playerWon.length > 0){
-        playerDeck.unshift(playerWon.splice(0,1)[0]);
-      }
-    }else if(compWon.length !== win && compDeck === 0){
-      while(compWon.length > 0){
-        compDeck.unshift(compWon.splice(0,1)[0]);
-      }
-    }
-  
-
-
-    // Function to start game
+// Function to start game
     function startGame(){
 
         // Function to shuffle deck by looping through the deck array
@@ -69,70 +49,89 @@ function warLoop(){
     console.log(playerDeck);
     console.log(compDeck);
 
+// function warLoop(){
+//   while(win > playerWon.length || win > compWon.length){
+//     if(playerWon.length === 52){
+//       console.log("You Win!")
+        
+//     }else if(compWon.length === win){
+//       console.log("CPU Wins!")
 
-    // game container
-    function playGame(){
+//     }else if(playerWon.length !== win && playerDeck === 0){
+//       while(playerWon.length > 0){
+//         playerDeck.unshift(playerWon.splice(0,1)[0]);
+//       }
+//     }else if(compWon.length !== win && compDeck === 0){
+//       while(compWon.length > 0){
+//         compDeck.unshift(compWon.splice(0,1)[0]);
+//       }
+//     }
+//    playGame;
+//   }
+// }
+// warLoop();
 
-      function playCard(){
-          playerPlayed = playerDeck[0];
-          compPlayed = compDeck[0];
-          // playerPlayed = 10
-          // compPlayed = 10
-        }
 
-        playCard();
+// game container
+function playGame(){
 
-        console.log(playerPlayed);
-        console.log(compPlayed);
+    function playCard(){
+        playerPlayed = playerDeck[0];
+        compPlayed = compDeck[0];
+        // playerPlayed = 10
+        // compPlayed = 10
+    }
+
+    playCard();
+
+    console.log(playerPlayed);
+    console.log(compPlayed);
 
 
-      // War game logic
-      // compaires values and sorts elements based on outcome
-      function cardLogic(){
+    // War game logic
+    // compaires values and sorts elements based on outcome
+    function cardLogic(){
         if(playerPlayed == compPlayed){
             for(m=0; m<4 ; m++){
-              warRoom.unshift(playerDeck.splice(0,1)[0]);
-              warRoom.unshift(compDeck.splice(0,1)[0]); 
+                warRoom.unshift(playerDeck.splice(0,1)[0]);
+                warRoom.unshift(compDeck.splice(0,1)[0]); 
             }
-          return playGame();
+            return playGame();
         }else if(playerPlayed > compPlayed){
             playerWon.unshift(compDeck.splice(0,1)[0]);
             playerWon.unshift(playerDeck.splice(0,1)[0]);
-          if(warRoom.length > 0){
-              function playerWar(){
+            if(warRoom.length > 0){
+                function playerWar(){
                 while(warRoom.length > 0){
-                  playerWon.unshift(warRoom.splice(0,1)[0]);
+                    playerWon.unshift(warRoom.splice(0,1)[0]);
+                    }
                 }
-              }
-            playerWar();
-          } 
+                playerWar();
+            } 
         }else if(playerPlayed < compPlayed){
             compWon.unshift(playerDeck.splice(0,1)[0]);
             compWon.unshift(compDeck.splice(0,1)[0]);
-          if(warRoom.length > 0){
-              function compWar(){
+            if(warRoom.length > 0){
+                function compWar(){
                 while(warRoom.length > 0){
-                  compWon.unshift(warRoom.splice(0,1)[0]);
-              }
-            }
-            compWar();
-          }
+                    compWon.unshift(warRoom.splice(0,1)[0]);
+                    }
+                }
+                compWar();
+            }   
         }
-      }
-      cardLogic();
-    }   
-    playGame();
-  }
-}
-warLoop();
+    }
+    cardLogic();
+}   
+playGame();
+
 
 // document.querySelector(.playBtn).addEventListener("click", () => {
-//     playCard();
+//     playGame();
 // })   
 
-     
-// console.log(compPlayed);
-// console.log(playerPlayed);
-// console.log(playerWon);
-// console.log(compWon);
-// console.log(warRoom); 
+console.log(compPlayed);
+console.log(playerPlayed);
+console.log(playerWon);
+console.log(compWon);
+console.log(warRoom); 
