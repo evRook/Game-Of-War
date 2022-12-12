@@ -17,59 +17,34 @@ var warRoom = [];
 const win = 52
 
 // Function to start game
-    function startGame(){
+function startGame(){
 
-        // Function to shuffle deck by looping through the deck array
-        function shuffle() {
-            for(i=deck.length - 1; i>0; i--){
-                const j = Math.floor(Math.random() * (i + 1));
-                const temp = deck[i];
-                deck[i] = deck[j];
-                deck[j] = temp;
-            }
+    // Function to shuffle deck by looping through the deck array
+    function shuffle() {
+        for(i=deck.length - 1; i>0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = deck[i];
+            deck[i] = deck[j];
+            deck[j] = temp;
         }
-
-        shuffle();
-
-
-        // Function to deal every other card into player/cpu decks
-        function dealCards(){
-            for(k=deck.length-1; k>=0; k--){
-                if(k % 2 === 0){
-                    playerDeck.unshift(deck.splice(k,1)[0]);
-                }else if(k % 2 === 1){
-                    compDeck.unshift(deck.splice(k,1)[0]);
-                }
-            }
-        }
-        dealCards();
     }
-    startGame();
 
-    console.log(playerDeck);
-    console.log(compDeck);
+    shuffle();
 
-// function warLoop(){
-//   while(win > playerWon.length || win > compWon.length){
-//     if(playerWon.length === 52){
-//       console.log("You Win!")
-        
-//     }else if(compWon.length === win){
-//       console.log("CPU Wins!")
 
-//     }else if(playerWon.length !== win && playerDeck === 0){
-//       while(playerWon.length > 0){
-//         playerDeck.unshift(playerWon.splice(0,1)[0]);
-//       }
-//     }else if(compWon.length !== win && compDeck === 0){
-//       while(compWon.length > 0){
-//         compDeck.unshift(compWon.splice(0,1)[0]);
-//       }
-//     }
-//    playGame;
-//   }
-// }
-// warLoop();
+    // Function to deal every other card into player/cpu decks
+    function dealCards(){
+        for(k=deck.length-1; k>=0; k--){
+            if(k % 2 === 0){
+                playerDeck.unshift(deck.splice(k,1)[0]);
+            }else if(k % 2 === 1){
+                compDeck.unshift(deck.splice(k,1)[0]);
+            }
+        }
+    }
+    dealCards();
+}
+startGame();
 
 
 // game container
@@ -84,15 +59,11 @@ function playGame(){
 
     playCard();
 
-    console.log(playerPlayed);
-    console.log(compPlayed);
-
-
     // War game logic
     // compaires values and sorts elements based on outcome
     function cardLogic(){
         if(playerPlayed == compPlayed){
-            for(m=0; m<4 ; m++){
+            for(m=0; m<4; m++){
                 warRoom.unshift(playerDeck.splice(0,1)[0]);
                 warRoom.unshift(compDeck.splice(0,1)[0]); 
             }
@@ -122,16 +93,59 @@ function playGame(){
         }
     }
     cardLogic();
-}   
-playGame();
 
+    function winCondition(){
+        if(playerWon.length === win){
+            console.log("You Win!")    
+        }else if(compWon.length === win){
+            console.log("CPU Wins!")
+        }else if(playerWon.length < win && playerDeck.length === 0){
+            while(playerWon.length > 0){
+                playerDeck.unshift(playerWon.splice(0,1)[0]);
+            }
+        }else if(compWon.length < win && compDeck.length === 0){
+            while(compWon.length > 0){
+                compDeck.unshift(compWon.splice(0,1)[0]);
+            }
+        }
+    }
+    winCondition();
+}   
+
+function warLoop(){
+    while(win > playerWon.length || win > compWon.length){
+        playGame();
+    }
+}
+warLoop();
 
 // document.querySelector(.playBtn).addEventListener("click", () => {
 //     playGame();
 // })   
 
-console.log(compPlayed);
-console.log(playerPlayed);
-console.log(playerWon);
-console.log(compWon);
-console.log(warRoom); 
+// console.log(compPlayed);
+// console.log(playerPlayed);
+// console.log(playerWon);
+// console.log(compWon);
+// console.log(warRoom); 
+
+// playGame();
+// console.log(compPlayed);
+// console.log(playerPlayed);
+// console.log(playerWon);
+// console.log(compWon);
+// console.log(warRoom); 
+
+// playGame();
+// console.log(compPlayed);
+// console.log(playerPlayed);
+// console.log(playerWon);
+// console.log(compWon);
+// console.log(warRoom);
+
+// playGame();
+// console.log(compPlayed);
+// console.log(playerPlayed);
+// console.log(playerWon);
+// console.log(compWon);
+// console.log(warRoom);
