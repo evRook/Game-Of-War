@@ -36,7 +36,7 @@ var playerDeck = [];
 var compDeck = [];
 
 var playerWon = [];
-
+         
 var compWon = [];
 
 var playerPlayed = [];
@@ -75,12 +75,12 @@ function startGame(){
 startGame();
 
 
-// // game container
+// // Game Container
 function playGame(){
 
     // function to calculate winner, if no winner shuffle cards pack to players
     function reshuffle(){
-        if((playerWon.length < 52 && playerDeck.length === 0)&&(compWon.length < 52 && compDeck.length === 0)){
+        if(((playerWon.length + playerDeck.length) < 52 && playerDeck.length === 0)&&((compWon.length + compDeck.length) < 52 && compDeck.length === 0)){
             function bothReshuffle(){
                 for(p=0; playerWon.length > 0; p++){
                   playerDeck.unshift(playerWon.splice(0,1)[0]);
@@ -107,7 +107,7 @@ function playGame(){
         }
     }
     reshuffle();
-    
+       
     // Chooses Player Card
     function playCard(){
         playerPlayed[0] = playerDeck[0];
@@ -115,13 +115,13 @@ function playGame(){
         // playerPlayed[0].score = 10
         // compPlayed[0].score = 10
     }
-    playCard();
+    playCard();  
 
-    // War game logic
+    // War Game Logic
     // compaires values and sorts elements based on outcome
     function cardLogic(){
-        if(playerPlayed[0].score == compPlayed[0].score){
-            if(playerDeck.length > 4 && compDeck.length > 4){
+        if((playerPlayed[0].score == compPlayed[0].score) > 0){
+            if(playerDeck.length > 4 && compDeck.length > 4){             
                 for(m=0; m<4; m++){
                   warRoom.unshift(playerDeck.splice(0,1)[0]);
                   warRoom.unshift(compDeck.splice(0,1)[0]); 
@@ -133,8 +133,8 @@ function playGame(){
                 for(r=0; playerDeck.length > 1; r++){
                   warRoom.unshift(playerDeck.splice(0,1)[0]);
                 }
-            }else if(compDeck.length < 5 && playerDeck.length >= 5){
-                for(s=0; s<4; s++){
+            }else if(compDeck.length < 5 && playerDeck.length > 4){
+                for(s=0; s<4; s++){                           
                    warRoom.unshift(playerDeck.splice(0,1)[0]);
                 }
                 for(t=0; compDeck.length > 1; t++){
@@ -152,10 +152,10 @@ function playGame(){
         }else if(playerPlayed[0].score > compPlayed[0].score){     
             playerWon.unshift(compDeck.splice(0,1)[0]);
             playerWon.unshift(playerDeck.splice(0,1)[0]);
-            if(warRoom.length > 0){
+            if(warRoom.length > 0){                
                 function playerWar(){
                 while(warRoom.length > 0){
-                    playerWon.unshift(warRoom.splice(0,1)[0]);    
+                    playerWon.unshift(warRoom.splice(0,1)[0]);     
                     }
                 }  
                 playerWar();
@@ -173,7 +173,7 @@ function playGame(){
             }   
         }
     }
-    cardLogic();  
+    cardLogic();                  
     
     function winCondition(){
         if((playerWon.length + playerDeck.length) === 52){
@@ -183,9 +183,19 @@ function playGame(){
         }
     }
     winCondition();
+  
+console.log("BREAK");
+console.log(playerDeck.length);
+console.log(compDeck.length);                                         
+console.log(playerWon.length);
+console.log(compWon.length);
+console.log("BREAK");    
+console.log(playerDeck.length + playerWon.length)
+console.log(compDeck.length + compWon.length)
+  
 }
-    
-// funciton to play game untill win condion is meet
+
+// funciton to play game untill win condion is meet         
 function warLoop(){
     while((playerWon.length + playerDeck.length) < 52 && (compWon.length + compDeck.length) < 52){
       playGame();
