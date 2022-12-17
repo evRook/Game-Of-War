@@ -51,7 +51,7 @@ var warRoom = [];
 // // Function to start game
 function startGame(){      
     
-    // Function to shuffle deck by looping through the deck array
+    // Function to shuffle deck, looping through the cards array by shuffling the cards one at a time untill "i" reaches the value of cards length
     function shuffle() {
         for(i = deck.cards.length - 1; i > 0; i--){
             const j = Math.floor(Math.random() * (i + 1));
@@ -71,7 +71,7 @@ function startGame(){
                 compDeck.unshift(deck.cards.splice(k,1)[0]);
             }
         }
-    }
+    } 
     dealCards();
 }
 startGame();
@@ -126,8 +126,7 @@ function playGame(){
         // if both players cards match and its the last card in both players deck
         if((playerPlayed[0].score == compPlayed[0].score)&&(playerDeck.length == 1 && compDeck.length == 1)){
             // if its the last card in both players deck but not the last total card for either player
-            if((playerDeck.length + playerWon.length) > 1){
-                 if((compDeck.length + compWon.length) > 1){ 
+            if(((playerDeck.length + playerWon.length) > 4)&&((compDeck.length + compWon.length) > 4)){
                       console.log(`WAR when both are on the last card! Reshuffle and continue the war!`)
                       warRoom.unshift(playerDeck.splice(0,1)[0]);
                       warRoom.unshift(compDeck.splice(0,1)[0]);
@@ -138,21 +137,79 @@ function playGame(){
                               warRoom.unshift(compDeck.splice(0,1)[0]); 
                           }
                       }
-                      endOfDeckWar();
-                 }
-            // if its the absolute last card in players deck and matches computers card
-            }else if((playerDeck.length + playerWon.length) == 1){
-                console.log(`OH NO! A last card stalemate! The Computers larger army Wins!`);
-                compWon.unshift(playerDeck.splice(0,1)[0]);
+                      endOfDeckWar(); 
+            }else if(((playerDeck.length + playerWon.length) < 5)&&((playerDeck.length + playerWon.length) > 1)){ //HEREHEREHERE
+                if(((compDeck.length + compWon.length) < 5)&&((compDeck.length + compWon.length) > 1)){
+                    console.log(`WAR when both are on the last card! Reshuffle and continue the war!`)
+                    warRoom.unshift(playerDeck.splice(0,1)[0]);
+                    warRoom.unshift(compDeck.splice(0,1)[0]);
+                    function endOfDeckWar2(){
+                        reshuffle();
+                        while(playerDeck.length > 1){
+                            warRoom.unshift(playerDeck.splice(0,1)[0]);
+                        }
+                        while(compDeck.length > 1){
+                            warRoom.unshift(compDeck.splice(0,1)[0]); 
+                        }
+                    }
+                    endOfDeckWar2(); 
+                }else if((compDeck.length + compWon.length) > 5){
+                    console.log(`WAR when both are on the last card! Reshuffle and continue the war!`)
+                    warRoom.unshift(playerDeck.splice(0,1)[0]);
+                    warRoom.unshift(compDeck.splice(0,1)[0]);
+                    function endOfDeckWar3(){
+                        reshuffle();
+                        while(playerDeck.length > 1){
+                            warRoom.unshift(playerDeck.splice(0,1)[0]);
+                        }
+                        for(m=0; m<3; m++){
+                            warRoom.unshift(compDeck.splice(0,1)[0]); 
+                        }
+                    }
+                    endOfDeckWar3(); 
+                }
+            }else if(((compDeck.length + compWon.length) < 5)&&((compDeck.length + compWon.length) > 1)){
+              if(((playerDeck.length + playerWon.length) < 5)&&((playerDeck.length + playerWon.length) > 1)){
+                    console.log(`WAR when both are on the last card! Reshuffle and continue the war!`)
+                    warRoom.unshift(playerDeck.splice(0,1)[0]);
+                    warRoom.unshift(compDeck.splice(0,1)[0]);
+                    function endOfDeckWar2(){
+                        reshuffle();
+                        while(playerDeck.length > 1){
+                            warRoom.unshift(playerDeck.splice(0,1)[0]);
+                        }
+                        while(compDeck.length > 1){
+                            warRoom.unshift(compDeck.splice(0,1)[0]); 
+                        }
+                    }
+                    endOfDeckWar2(); 
+                }else if((playerDeck.length + playerWon.length) > 5){
+                    console.log(`WAR when both are on the last card! Reshuffle and continue the war!`)
+                    warRoom.unshift(playerDeck.splice(0,1)[0]);
+                    warRoom.unshift(compDeck.splice(0,1)[0]);
+                    function endOfDeckWar3(){
+                        reshuffle();
+                        while(compDeck.length > 1){
+                            warRoom.unshift(compDeck.splice(0,1)[0]);
+                        }
+                        for(m=0; m<3; m++){
+                            warRoom.unshift(playerDeck.splice(0,1)[0]); 
+                        }
+                    }
+                    endOfDeckWar3(); 
+                }
+            // if its the absolute last card in the players deck and matches players card
+            }else if(((compDeck.length + compWon.length) > 1)&&((playerDeck.length + playerWon.length) == 1)){
+                console.log(`oH nO! A last card stalemate! The Computers larger army Wins!`);
                 compWon.unshift(compDeck.splice(0,1)[0]);
+                compWon.unshift(playerDeck.splice(0,1)[0]);
                 function compFinalWar(){
                     while(warRoom.length > 0){
-                        compWon.unshift(warRoom.splice(0,1)[0]);     
+                        compWon.unshift(warRoom.splice(0,1)[0]);
                     }
-                }  
+                }
                 compFinalWar();
-            // if its the absolute last card in the computers deck and matches players card
-            }else if((compDeck.length + compWon.length) == 1){
+            }else if(((playerDeck.length + playerWon.length) > 1)&&((compDeck.length + compWon.length) == 1)){
                 console.log(`A last card stalemate! The Players larger army Wins!`);
                 playerWon.unshift(compDeck.splice(0,1)[0]);
                 playerWon.unshift(playerDeck.splice(0,1)[0]);
@@ -194,7 +251,7 @@ function playGame(){
                 }  
             }
             console.log(`WAR! The Player played a ${playerPlayed[0].rank} of ${playerPlayed[0].suit} and the Computer played a ${compPlayed[0].rank} of ${compPlayed[0].suit}`);
-        // if player card is higher than computers but poth played cards in players win pile
+        // if player card is higher than computers put both played cards in players win pile
         }else if(playerPlayed[0].score > compPlayed[0].score){    
             playerWon.unshift(compDeck.splice(0,1)[0]);
             playerWon.unshift(playerDeck.splice(0,1)[0]);             
@@ -236,7 +293,7 @@ function playGame(){
         }
     }
     prize();
-    console.log("------------/-------------");
+    console.log("------------/-------------");  
 }
 
 
@@ -257,4 +314,5 @@ function warLoop(){
       winCondition();
     }  
 }
-warLoop();   
+warLoop();                            
+   
