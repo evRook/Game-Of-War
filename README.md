@@ -1,6 +1,6 @@
 # **A Game of War!**
 
-### War is a well known card game typically played with two players using a stadard deck of cards. With this variation of the game we threw out the phisical deck and replaced it with a much friendlier vertual version.
+### War is a well known card game typically played with two players using a standard deck of cards. With this variation of the game we threw out the phisical deck and replaced it with a much friendlier vertual version.
 
 <br>
 
