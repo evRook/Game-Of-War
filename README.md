@@ -8,9 +8,9 @@
 
 <br>
 
-## To play this fully automated game of war 
-## [Click Here!]()
-- after the page loads, open the console to see who wins!
+## To play this fully automated game of war [Click Here!]()
+- After the page loads, open the console to see who wins!
+- If youd like to play again, just refresh the page!
 
 <br>
 <br>
