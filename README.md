@@ -29,12 +29,12 @@
     - Each player now puts four cards face down.
     - Both players then flip the fourth face down card face up.
     - The higher of the two new face up cards wins all 10 cards!
-        - If both cards are the same agin. You repeat the war!
+        - If both cards are the same again. You repeat the war!
         - Put another four cards down and compair the last card.
         - Do this until a winner is finally declared!
         - Remember that you win all played cards if you win the war! That means if its a double or even triple war, all of the spoils of war will be yours.
 - If you run our of cards in your hand you must reshuffle your prizes into your hand.
-- Continue the game untill one player has all 52 cards!
+- Continue the game until one player has all 52 cards!
 
 #### If you have any intrest in more complicated mechanics or variations of the game. The [Wikipedia](https://en.wikipedia.org/wiki/War_(card_game)) article for War has a great description of them!
 
