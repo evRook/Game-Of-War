@@ -8,7 +8,7 @@
 
 <br>
 
-## To play this fully automated game of war [Click Here!]()
+## To play this fully automated game of war [Click Here!](https://evrook.github.io/Game-Of-War/)
 - After the page loads, open the console to see who wins!
 - If you'd like to play again, just refresh the page!
 
