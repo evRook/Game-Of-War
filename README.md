@@ -10,7 +10,7 @@
 
 ## To play this fully automated game of war [Click Here!]()
 - After the page loads, open the console to see who wins!
-- If youd like to play again, just refresh the page!
+- If you'd like to play again, just refresh the page!
 
 <br>
 <br>
