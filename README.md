@@ -16,8 +16,9 @@
 <br>
 
 ---
-## Rules
 ---
+## Rules
+
 #### For those of you unfamiliar with how the game of war is played. Ill explain the basic rules of the game here.
 
 - After shuffling, both players are delt 26 cards.
